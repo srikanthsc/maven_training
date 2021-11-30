@@ -2,7 +2,9 @@ package fr.lernejo;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import java.util.function.BiFunction;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static java.util.function.Predicate.isEqual;
 
 
@@ -34,8 +36,20 @@ class SampleTest {
         .isEqualTo(6);
     }
 
-    //void fact_test(){
-      //  Sample s = new Sample();
-        //Sample.Operation operation = Sample.Operation.;
-    //}
+    @Test
+    void test_factorielle() {
+        Sample s = new Sample();
+        int n = 10;
+        int result = s.fact(n);
+        Assertions.assertThat(result).as("fact of ten")
+            .isEqualTo(3628800);
+    }
+
+    @Test
+    void bad_arg() {
+        Sample s = new Sample();
+        int n = -1;
+        org.assertj.core.api.Assertions.assertThatExceptionOfType(IllegalArgumentException.class)
+            .isThrownBy(() -> s.fact(n));
+    }
     }
